@@ -2,3 +2,7 @@
 DataModel/obj/Debug/build.force
 SportClubUkolova/bin/System.Net.Http.Formatting.dll
 .vs/SportClubUkolova/v14/.suo
+DataModel/obj/Debug/TempPE/Models.SportClub.cs.dll
+DataModel/obj/Debug/TempPE/Models.SportClub.Designer.cs.dll
+DataModel/obj/Debug/TempPE/App_Data.SportsClub.cs.dll
+DataModel/obj/Debug/TempPE/App_Data.SportsClub.Context.cs.dll

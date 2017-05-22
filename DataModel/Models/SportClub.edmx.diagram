@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9da7bf5ef1ce41b9aec6cfd9c7092b2e" Name="Diagram1">
+        <EntityTypeShape EntityType="SportsClubEntities.Client" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportsClubEntities.Place" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportsClubEntities.Sport" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportsClubEntities.Trainer" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportsClubEntities.Training" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="SportsClubEntities.FK__Training__Client__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="SportsClubEntities.FK__Training__Place__35BCFE0A" ManuallyRouted="false" />
+        <AssociationConnector Association="SportsClubEntities.FK__Trainer__SportsT__22AA2996" ManuallyRouted="false" />
+        <AssociationConnector Association="SportsClubEntities.FK__Training__Traine__34C8D9D1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
