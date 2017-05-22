@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SportsClubEntities.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="ClientId" />
+    </Key>
+    <Property Name="ClientId" Type="int" Nullable="false" />
+    <Property Name="ClientFIO" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Address" Type="varchar" MaxLength="100" />
+    <Property Name="PhoneNumber" Type="varchar" MaxLength="20" />
+    <Property Name="ClientCash" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Place">
+    <Key>
+      <PropertyRef Name="PlaceId" />
+    </Key>
+    <Property Name="PlaceId" Type="int" Nullable="false" />
+    <Property Name="PlaceName" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Capacity" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sport">
+    <Key>
+      <PropertyRef Name="SportId" />
+    </Key>
+    <Property Name="SportId" Type="int" Nullable="false" />
+    <Property Name="SportName" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="SportsType" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Trainer">
+    <Key>
+      <PropertyRef Name="TrainerId" />
+    </Key>
+    <Property Name="TrainerId" Type="int" Nullable="false" />
+    <Property Name="TrainerFIO" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="DateBirth" Type="datetime" />
+    <Property Name="Achievements" Type="varchar" MaxLength="100" />
+    <Property Name="SportsType" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Training">
+    <Key>
+      <PropertyRef Name="TrainingId" />
+    </Key>
+    <Property Name="TrainingId" Type="int" Nullable="false" />
+    <Property Name="TrainingType" Type="int" Nullable="false" />
+    <Property Name="TrainingDate" Type="datetime" Nullable="false" />
+    <Property Name="Trainer" Type="int" Nullable="false" />
+    <Property Name="Place" Type="int" Nullable="false" />
+    <Property Name="Client" Type="int" Nullable="false" />
+    <Property Name="Cost" Type="int" Nullable="false" />
+    <Property Name="CountOfFreePlaces" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Trainer__SportsT__22AA2996">
+    <End Role="Sport" Type="Self.Sport" Multiplicity="1" />
+    <End Role="Trainer" Type="Self.Trainer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sport">
+        <PropertyRef Name="SportId" />
+      </Principal>
+      <Dependent Role="Trainer">
+        <PropertyRef Name="SportsType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Training__Client__47DBAE45">
+    <End Role="Client" Type="Self.Client" Multiplicity="1" />
+    <End Role="Training" Type="Self.Training" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="ClientId" />
+      </Principal>
+      <Dependent Role="Training">
+        <PropertyRef Name="Client" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Training__Place__35BCFE0A">
+    <End Role="Place" Type="Self.Place" Multiplicity="1" />
+    <End Role="Training" Type="Self.Training" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Place">
+        <PropertyRef Name="PlaceId" />
+      </Principal>
+      <Dependent Role="Training">
+        <PropertyRef Name="Place" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Training__Traine__34C8D9D1">
+    <End Role="Trainer" Type="Self.Trainer" Multiplicity="1" />
+    <End Role="Training" Type="Self.Training" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Trainer">
+        <PropertyRef Name="TrainerId" />
+      </Principal>
+      <Dependent Role="Training">
+        <PropertyRef Name="Trainer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SportsClubEntitiesStoreContainer">
+    <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Place" EntityType="Self.Place" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sport" EntityType="Self.Sport" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Trainer" EntityType="Self.Trainer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Training" EntityType="Self.Training" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Trainer__SportsT__22AA2996" Association="Self.FK__Trainer__SportsT__22AA2996">
+      <End Role="Sport" EntitySet="Sport" />
+      <End Role="Trainer" EntitySet="Trainer" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Training__Client__47DBAE45" Association="Self.FK__Training__Client__47DBAE45">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="Training" EntitySet="Training" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Training__Place__35BCFE0A" Association="Self.FK__Training__Place__35BCFE0A">
+      <End Role="Place" EntitySet="Place" />
+      <End Role="Training" EntitySet="Training" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Training__Traine__34C8D9D1" Association="Self.FK__Training__Traine__34C8D9D1">
+      <End Role="Trainer" EntitySet="Trainer" />
+      <End Role="Training" EntitySet="Training" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -65,6 +65,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Client.cs">
+      <DependentUpon>SportClub.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Place.cs">
+      <DependentUpon>SportClub.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Sport.cs">
+      <DependentUpon>SportClub.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SportClub.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SportClub.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SportClub.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SportClub.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SportClub.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SportClub.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Trainer.cs">
+      <DependentUpon>SportClub.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Training.cs">
+      <DependentUpon>SportClub.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -74,6 +104,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <EntityDeploy Include="Models\SportClub.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SportClub.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Models\SportClub.edmx.diagram">
+      <DependentUpon>SportClub.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -97,7 +134,18 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\SportClub.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SportClub.edmx</DependentUpon>
+      <LastGenOutput>SportClub.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\SportClub.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SportClub.edmx</DependentUpon>
+      <LastGenOutput>SportClub.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -8,11 +8,11 @@ namespace SportClubUkolova.Core
 {
     public interface ITrainerRepository
     {
-        List<Trainer> AllTrainers { get; }
+        //List<Trainer> AllTrainers { get; }
 
-        bool AddTrainer(Trainer trainer);
-        bool EditTrainer(Trainer trainer);
-        bool DeleteTrainer(int? trainerId);
+        //bool AddTrainer(Trainer trainer);
+        //bool EditTrainer(Trainer trainer);
+        //bool DeleteTrainer(int? trainerId);
 
     }
 }

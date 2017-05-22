@@ -8,9 +8,9 @@ namespace SportClubUkolova.Core
 {
     public interface ISportRepository
     {
-        List<Sport> Sports { get; }
+        //List<Sport> Sports { get; }
 
-        bool AddNewSport(Sport sport);
-        bool DeleteSport(Sport sport);
+        //bool AddNewSport(Sport sport);
+        //bool DeleteSport(Sport sport);
     }
 }

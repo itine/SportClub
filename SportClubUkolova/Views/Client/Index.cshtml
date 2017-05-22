@@ -1,0 +1,43 @@
+﻿@model IEnumerable<SportClubUkolova.Models.ClientModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Client:
+        </th>
+        <th>
+            Address:
+        </th>
+        <th>
+            Phone Number:
+        </th>
+        <th>
+            Cash:
+        </th>
+    </tr>
+
+    @foreach(var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => item.ClientName)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Cash)
+            </td>
+        </tr>
+    }
+</table>

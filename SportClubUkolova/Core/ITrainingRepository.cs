@@ -8,10 +8,10 @@ namespace SportClubUkolova.Core
 {
     public interface ITrainingRepository
     {
-        List<Training> AllTrainings { get; }
+        //List<Training> AllTrainings { get; }
 
-        bool EditTraining(Training training);
-        bool RegistrTraining(Client client, Trainer trainer, Place place);
-        bool DeleteTraining(Client client);
+        //bool EditTraining(Training training);
+        //bool RegistrTraining(Client client, Trainer trainer, Place place);
+        //bool DeleteTraining(Client client);
     }
 }
