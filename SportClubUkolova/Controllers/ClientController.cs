@@ -1,4 +1,5 @@
 ﻿using SportClubUkolova.Core;
+using SportClubUkolova.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,15 @@ namespace SportClubUkolova.Controllers
         {
             var clients = clientRepo.GetAllClients();
             return View(clients);
+        }
+
+        public ActionResult ClientRegistration(ClientModel model)
+        {
+            if (model != null && ModelState.IsValid)
+            {
+                clientRepo.ClientRegistration(model);
+            }
+            return RedirectToAction("Index");
         }
 
     }

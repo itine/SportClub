@@ -10,7 +10,7 @@ namespace SportClubUkolova.Core
     public interface IClientRepository
     {
         IEnumerable<ClientModel> GetAllClients();
-        //bool ClientRegistration(Client client);
+        int ClientRegistration(ClientModel client);
         //bool EditClientInfo(Client client);
         //bool DeleteClient(int? clientId);
         //Client GetClientById(int? clientId);

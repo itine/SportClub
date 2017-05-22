@@ -12,23 +12,27 @@ namespace SportClubUkolova.Core
         private SportsClubEntities1 edm = new SportsClubEntities1();
 
         public IEnumerable<ClientModel> GetAllClients() => (from client in edm.Clients
-                                                select new ClientModel
-                                                {
-                                                    ClientId = client.ClientId,
-                                                    ClientName = client.ClientFIO,
-                                                    Address = client.Address,
-                                                    Cash = client.ClientCash,
-                                                    PhoneNumber = client.PhoneNumber
-                                                }).ToList();
+                                                            select new ClientModel
+                                                            {
+                                                                ClientId = client.ClientId,
+                                                                ClientName = client.ClientFIO,
+                                                                Address = client.Address,
+                                                                Cash = client.ClientCash,
+                                                                PhoneNumber = client.PhoneNumber
+                                                            }).ToList();
 
-        //public bool ClientRegistration(Client client)
-        //{
-        //    if (context.Client.Find(client) != null)
-        //        return false;
-        //    context.Client.Add(client);
-        //    context.SaveChanges();
-        //    return true;
-        //}
+        public int ClientRegistration(ClientModel client)
+        {
+            var clientEntity = new Client()
+            {
+                ClientFIO = client.ClientName,
+                Address = client.Address,
+                PhoneNumber = client.PhoneNumber,
+                ClientCash = client.Cash
+            };
+            edm.Clients.Add(clientEntity);
+            return clientEntity.ClientId;
+        }
 
         //public bool EditClientInfo(Client client)
         //{
