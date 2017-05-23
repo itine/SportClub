@@ -11,10 +11,10 @@ namespace SportClubUkolova.Core
     {
         IEnumerable<ClientModel> GetAllClients();
         int ClientRegistration(ClientModel client);
-        //bool EditClientInfo(Client client);
-        //bool DeleteClient(int? clientId);
-        //Client GetClientById(int? clientId);
-        //long CheckBalance(Client client);
+        int EditClientInfo(ClientModel client);
+        int DeleteClient(int clientId);
+        ClientModel GetClientById(int clientId);
+        long CheckBalance(ClientModel client);
 
     }
 }
