@@ -1,4 +1,5 @@
-﻿using SportClubUkolova.Core;
+﻿using DataModel.Models;
+using SportClubUkolova.Core;
 using SportClubUkolova.Models;
 using System;
 using System.Collections.Generic;
@@ -14,9 +15,15 @@ namespace SportClubUkolova.Controllers
         IClientRepository clientRepo = new ClientRepository();
 
         public ActionResult Index()
-        {
-            var clients = clientRepo.GetAllClients();
+        {            
+            var clients = clientRepo.GetAllClients();            
             return View(clients);
+        }
+
+        [HttpGet]
+        public ActionResult ClientRegistration()
+        {
+            return View("ClientRegistration");
         }
 
         public ActionResult ClientRegistration(ClientModel model)
@@ -27,6 +34,20 @@ namespace SportClubUkolova.Controllers
             }
             return RedirectToAction("Index");
         }
+        
+        public ActionResult EditClient(int clientId)
+        {
+            var client = clientRepo.GetClientById(clientId);
+            return View("EditClientData", client);
+        }
 
+        public ActionResult SaveChanges(ClientModel model)
+        {
+            if(model != null && ModelState.IsValid)
+            {
+                clientRepo.EditClientInfo(model);
+            }
+            return RedirectToAction("Index");
+        }
     }
 }
