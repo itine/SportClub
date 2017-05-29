@@ -33,9 +33,10 @@ namespace SportsClub.WebClient.Controllers
         public ActionResult EditClient(int clientId)
         {
             var client = clientRepo.GetClientById(clientId);
-            return View("EditClientData", client);
+            return View("EditClient", client);
         }
 
+        [HttpPost]
         public ActionResult SaveChanges(ClientModel model)
         {
             if (model != null && ModelState.IsValid)
