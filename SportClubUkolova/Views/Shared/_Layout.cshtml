@@ -44,6 +44,12 @@
             </div>
         </footer>
 
+        @Styles.Render("~/Content/css")
+        @Styles.Render("~/Content/themes/base/css")
+        @Scripts.Render("~/bundles/modernizr")
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @Scripts.Render("~/bundles/jqueryui")
         @Scripts.Render("~/bundles/jquery")
         @RenderSection("scripts", required: false)
     </body>
