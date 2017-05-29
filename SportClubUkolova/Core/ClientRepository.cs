@@ -34,52 +34,39 @@ namespace SportClubUkolova.Core
             return clientEntity.ClientId;
         }
 
-        //public bool EditClientInfo(Client client)
-        //{
-        //    if (context.Client.Find(client) == null)
-        //        return false;
-        //    DeleteClient(client.ClientId);
-        //    Client newClient = new Client()
-        //    {
-        //        Address = client.Address,
-        //        ClientCash = client.ClientCash,
-        //        ClientFIO = client.ClientFIO,
-        //        ClientId = client.ClientId,
-        //        PhoneNumber = client.PhoneNumber,
-        //        Training = client.Training
-        //    };
-        //    context.Client.Add(newClient);
-        //    context.SaveChanges();
-        //    return true;
-        //}
 
-        //public bool DeleteClient(int? clientId)
-        //{
-        //    if (clientId != null)
-        //    {
-        //        var client = context.Client.Where(x => x.ClientId == clientId).FirstOrDefault();
-        //        if (client != null)
-        //        {
-        //            context.Client.Remove(client);
-        //            context.SaveChanges();
-        //            return true;
-        //        }
-        //    }
-        //    return false;
-        //}
+        public int EditClientInfo(ClientModel client)
+        {
+            var clientEntity = edm.Clients.FirstOrDefault(x => x.ClientId == client.ClientId);
+            clientEntity.ClientFIO = client.ClientName;
+            clientEntity.ClientCash = client.Cash;
+            clientEntity.PhoneNumber = client.PhoneNumber;
+            edm.Clients.Add(clientEntity);
+            edm.SaveChanges();
+            return clientEntity.ClientId;
+        }
 
-        //public Client GetClientById(int? clientId)
-        //{
-        //    if (clientId != null)
-        //    {
-        //        return context.Client.Where(x => x.ClientId == clientId).FirstOrDefault();
-        //    }
-        //    return null;
-        //}
+        public int DeleteClient(int clientId)
+        {
+            var clientEntity = edm.Clients.Where(x => x.ClientId == clientId).FirstOrDefault();
+            edm.Clients.Remove(clientEntity);
+            return clientEntity.ClientId;
+        }
 
-        //public long CheckBalance(Client client)
-        //{
-        //    return client.ClientCash;
-        //}
+        public ClientModel GetClientById(int clientId) => (from client in edm.Clients
+                                                           where client.ClientId == clientId
+                                                           select new ClientModel
+                                                           {
+                                                               ClientId = client.ClientId,
+                                                               ClientName = client.ClientFIO,
+                                                               Address = client.Address,
+                                                               Cash = client.ClientCash,
+                                                               PhoneNumber = client.PhoneNumber
+                                                           }).FirstOrDefault();
+
+
+
+        public long CheckBalance(ClientModel client) => edm.Clients.FirstOrDefault(x => x.ClientId == client.ClientId).ClientCash;
+       
     }
 }
